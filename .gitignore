@@ -2,9 +2,9 @@
 ########
 !*.c 
 !*.h
-   *.bak
-   *.uvgui.*
-   JLinkLog.txt
+*.bak
+*.uvgui.*
+JLinkLog.txt
 /Firmware/Output
 
 # OS generated files #
