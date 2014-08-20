@@ -17,6 +17,7 @@
 
 - Keil C51 µVision V4.72.9.0
 - Altium Designer 14
+- 蓝牙模块波特率已预先设置为 115200bps
 
 # 蓝牙指令
 
