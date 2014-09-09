@@ -46,7 +46,6 @@ int main(void)
 	Delay_ms(250);
 	getTime();
 	EA = 1;
-	playSound(3);
 	
 	
   while(1)
