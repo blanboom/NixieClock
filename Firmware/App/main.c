@@ -26,7 +26,7 @@ uint8_t minute_alarm = 1;
 uint8_t second_alarm = 1;
 uint8_t alarmEnable = 0;
 // 自定义显示模式下，要显示的数字
-uint32_t numbertoDisplay = 0;
+uint8_t numbertoDisplay[6] = {0, 0, 0, 0, 0, 0};
 // 模式，有时钟模式和自定义显示模式
 uint8_t mode = MODE_CLOCK;
 
@@ -66,7 +66,7 @@ int main(void)
 		
 		if(second_tmp != second && mode == MODE_DISPLAY)  // 自定义显示模式，每秒刷新一次
 		{
-			displayNumber(numbertoDisplay);
+			displayUserNumber(numbertoDisplay);
 			second_tmp = second;
     }
 		

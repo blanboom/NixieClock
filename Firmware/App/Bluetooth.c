@@ -42,7 +42,7 @@ void bluetoothInit(void)
  */
 void bluetoothCheck(void)
 {
-	uint8_t i;
+	uint8_t i, j;
 	if(COM1.RX_TimeOut > 0)		// 超时计数
 	{
 		Delay_ms(2);
@@ -102,10 +102,11 @@ void bluetoothCheck(void)
 							else if(RX1_Buffer[i + 3] == 'D')     // 自定义显示
 							{
 								mode = MODE_DISPLAY;                // 进入自定义显示模式
-								numbertoDisplay = (RX1_Buffer[i + 4] - '0') * 100000ul + (RX1_Buffer[i + 5] - '0') * 10000ul +
-												        	(RX1_Buffer[i + 6] - '0') * 1000ul + (RX1_Buffer[i + 7] - '0') * 100ul +
-												        	(RX1_Buffer[i + 8] - '0') * 10ul + (RX1_Buffer[i + 9] - '0');
-								displayNumber(numbertoDisplay);
+								for(j = 0; j < 6; j++)
+								{
+									numbertoDisplay[j] = RX1_Buffer[i + j + 4];
+								}
+								displayUserNumber(numbertoDisplay);
 								displayDots((RX1_Buffer[i + 10] - '0') * 10 + (RX1_Buffer[i + 11] - '0'));
 								break;
 							}

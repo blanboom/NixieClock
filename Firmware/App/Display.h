@@ -37,5 +37,6 @@ void displayTime(void);
 void displayDots(uint8_t);
 void ledUpdate(uint8_t, uint8_t, uint8_t);
 void displayNumber(uint32_t number);
+void displayUserNumber(uint8_t*);
 
 #endif

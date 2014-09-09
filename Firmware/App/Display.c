@@ -83,6 +83,65 @@ void displayNumber(uint32_t number)
 }
 
 /**
+ * void displayUserNumber(uint8_t)
+ * 简介：显示数字（支持空格）
+ * 功能：发送数字到 HV57708
+ * 输入：6 位 unsigned char 类型数组
+ * 输出：无
+ */
+void displayUserNumber(uint8_t* number)
+{
+	uint32_t data_part2  = 0;
+	uint32_t data_part1  = 0;
+	uint8_t tmp_number = 0;
+	if(number[0] <= '9' && number[0] >= '0')
+	{
+		tmp_number = numbers[0][number[0] - '0'];
+		data_part1 |= 1ul << tmp_number;
+	}
+	
+	if(number[1] <= '9' && number[1] >= '0')
+	{
+		tmp_number = numbers[1][number[1] - '0'];
+		data_part1 |= 1ul << tmp_number;
+	}
+	
+	if(number[2] <= '9' && number[2] >= '0')
+	{
+		tmp_number = numbers[2][number[2] - '0'];
+		if(tmp_number < 32)
+		{
+			data_part1 |= 1ul << tmp_number;
+		}
+		else
+		{
+			data_part2 |= 1ul << (tmp_number - 32);
+		}
+	}
+		
+	if(number[3] <= '9' && number[3] >= '0')
+	{
+		tmp_number = numbers[3][number[3] - '0'];
+		data_part2 |= 1ul << (tmp_number - 32);
+	}
+	
+	if(number[4] <= '9' && number[4] >= '0')
+	{
+		tmp_number = numbers[5][number[4] - '0'];
+		data_part2 |= 1ul << (tmp_number - 32);
+	}
+	
+	if(number[5] <= '9' && number[5] >= '0')
+	{
+		tmp_number = numbers[4][number[5] - '0'];       // 在数组中调换两行的位置不行，不知道是哪里出问题了
+		data_part2 |= 1ul << (tmp_number - 32);
+	}
+	
+	HV57708_SendData(data_part2, data_part1);
+	HV57708_OutputData();
+}
+
+/**
  * void displayTime(void)
  * 简介：显示时间
  * 功能：发送时间显示数据到 HV57708，时间在全局变量中储存
