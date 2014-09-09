@@ -25,6 +25,8 @@ extern uint8_t minute_alarm;
 extern uint8_t second_alarm;
 extern uint8_t alarmEnable;
 
+extern uint8_t sleepMode;
+
 extern uint8_t numbertoDisplay[];
 
 #endif

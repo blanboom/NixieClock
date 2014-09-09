@@ -25,6 +25,8 @@ uint8_t hour_alarm = 12;
 uint8_t minute_alarm = 1;
 uint8_t second_alarm = 1;
 uint8_t alarmEnable = 0;
+// 夜间模式
+uint8_t sleepMode = 1;
 // 自定义显示模式下，要显示的数字
 uint8_t numbertoDisplay[6] = {0, 0, 0, 0, 0, 0};
 // 模式，有时钟模式和自定义显示模式
@@ -52,7 +54,15 @@ int main(void)
 	{
 		if(second_tmp != second && mode == MODE_CLOCK)  // 时钟模式，每秒刷新一次显示
 		{
-			displayTime();
+			if(sleepMode && hour >= 1 && hour <= 6)
+			{
+				displayUserNumber("     ");   // 夜间模式，不显示数字
+			}
+			else
+			{
+				displayTime();
+			}
+			
 			if(second % 2 == 0)
 			{
 				displayDots(DISPLAY_DOTS_ALL);

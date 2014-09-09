@@ -92,6 +92,19 @@ void bluetoothCheck(void)
 								playSound(10);
 								break;
 							}
+							else if(RX1_Buffer[i + 3] == 'N')    // 夜间模式
+							{
+								if(RX1_Buffer[i + 4] == '0')
+								{
+									sleepMode = 0;
+								}
+								if(RX1_Buffer[i + 4] == '1')
+								{
+									sleepMode = 1;
+								}
+								playSound(10);
+								break;
+							}
 							else if(RX1_Buffer[i + 3] == 'L')     // 设置 LED 颜色
 							{
 								ledUpdate((RX1_Buffer[i + 4] - '0') * 10 + (RX1_Buffer[i + 5] - '0'),
