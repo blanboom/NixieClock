@@ -13,7 +13,7 @@
 - 可通过蓝牙对时钟进行控制
 - 带有自定义显示模式，可通过蓝牙显示任意数字（例如温度、网速等）
 
-![辉光管时钟照片](http://blanboom.org/images/2014/08/NixieClock.jpg)
+![辉光管时钟照片](https://blanboom.org/images/2014/08/NixieClock.jpg)
 
 ## 开发环境
 
